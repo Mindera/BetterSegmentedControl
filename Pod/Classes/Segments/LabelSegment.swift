@@ -27,6 +27,8 @@ open class LabelSegment: BetterSegmentedControlSegment {
     public var selectedFont: UIFont
     public var selectedTextColor: UIColor
     public var selectedBackgroundColor: UIColor
+
+    public var isActive: Bool
     
     // MARK: Lifecycle
     public init(text: String? = nil,
@@ -35,7 +37,8 @@ open class LabelSegment: BetterSegmentedControlSegment {
                 normalTextColor: UIColor? = nil,
                 selectedBackgroundColor: UIColor? = nil,
                 selectedFont: UIFont? = nil,
-                selectedTextColor: UIColor? = nil) {
+                selectedTextColor: UIColor? = nil,
+                isActive: Bool = true) {
         self.text = text
         self.normalBackgroundColor = normalBackgroundColor ?? DefaultValues.normalBackgroundColor
         self.normalFont = normalFont ?? DefaultValues.font
@@ -43,6 +46,7 @@ open class LabelSegment: BetterSegmentedControlSegment {
         self.selectedBackgroundColor = selectedBackgroundColor ?? DefaultValues.selectedBackgroundColor
         self.selectedFont = selectedFont ?? DefaultValues.font
         self.selectedTextColor = selectedTextColor ?? DefaultValues.selectedTextColor
+        self.isActive = isActive
     }
     
     // MARK: BetterSegmentedControlSegment

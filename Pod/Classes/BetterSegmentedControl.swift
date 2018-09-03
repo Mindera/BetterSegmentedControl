@@ -359,7 +359,9 @@ private extension CALayer {
     // MARK: Action handlers
     @objc private func tapped(_ gestureRecognizer: UITapGestureRecognizer!) {
         let location = gestureRecognizer.location(in: self)
-        setIndex(nearestIndex(toPoint: location))
+        if isSegmentActive(onPoint: location) {
+            setIndex(nearestIndex(toPoint: location))
+        }
     }
     @objc private func panned(_ gestureRecognizer: UIPanGestureRecognizer!) {
         guard !panningDisabled else {
@@ -375,9 +377,16 @@ private extension CALayer {
             frame.origin.x = max(min(frame.origin.x, bounds.width - indicatorViewInset - frame.width), indicatorViewInset)
             indicatorView.frame = frame
         case .ended, .failed, .cancelled:
-            setIndex(nearestIndex(toPoint: indicatorView.center))
+            if isSegmentActive(onPoint: indicatorView.center) {
+                setIndex(nearestIndex(toPoint: indicatorView.center))
+            }
         default: break
         }
+    }
+
+    private func isSegmentActive(onPoint point: CGPoint) -> Bool {
+        let segment = segments[Int(nearestIndex(toPoint: point))]
+        return segment.isActive ? true : false
     }
 }
 

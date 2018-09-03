@@ -23,6 +23,8 @@ open class IconSegment: BetterSegmentedControlSegment {
     
     public var selectedIconTintColor: UIColor
     public var selectedBackgroundColor: UIColor
+
+    public var isActive: Bool
     
     // MARK: Lifecycle
     public init(icon: UIImage,
@@ -30,13 +32,15 @@ open class IconSegment: BetterSegmentedControlSegment {
                 normalBackgroundColor: UIColor? = nil,
                 normalIconTintColor: UIColor,
                 selectedBackgroundColor: UIColor? = nil,
-                selectedIconTintColor: UIColor) {
+                selectedIconTintColor: UIColor,
+                isActive: Bool = true) {
         self.icon = icon.withRenderingMode(.alwaysTemplate)
         self.iconSize = iconSize
         self.normalBackgroundColor = normalBackgroundColor ?? DefaultValues.normalBackgroundColor
         self.normalIconTintColor = normalIconTintColor
         self.selectedBackgroundColor = selectedBackgroundColor ?? DefaultValues.selectedBackgroundColor
         self.selectedIconTintColor = selectedIconTintColor
+        self.isActive = isActive
     }
     
     // MARK: BetterSegmentedControlSegment

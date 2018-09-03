@@ -10,4 +10,5 @@ import Foundation
 public protocol BetterSegmentedControlSegment {
     var normalView: UIView { get }
     var selectedView: UIView { get }
+    var isActive: Bool { get set }
 }
