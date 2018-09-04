@@ -377,9 +377,7 @@ private extension CALayer {
             frame.origin.x = max(min(frame.origin.x, bounds.width - indicatorViewInset - frame.width), indicatorViewInset)
             indicatorView.frame = frame
         case .ended, .failed, .cancelled:
-            if isSegmentActive(onPoint: indicatorView.center) {
-                setIndex(nearestIndex(toPoint: indicatorView.center))
-            }
+            setIndex(nearestIndex(toPoint: indicatorView.center))
         default: break
         }
     }
